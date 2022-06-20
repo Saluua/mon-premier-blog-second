@@ -1,4 +1,6 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 
 	<article class='post'>
@@ -18,5 +20,30 @@
 	<p>{{post.texte}}</p>
 	{% endif %}
 	</article>
+	<div>
+		<h2>{{commentaires.count}} commentaires</h2>
+		{% for comment in commentaires %}
+		<div class="commentaires" style='padding:10px'>
+		<p clas="font-weight-bold">
+			{{comment.nom}}
+			{{comment.created_on}}
+
+		</p>
+		{{comment.corps|linebreaks}}
+	</div>
+		{% endfor %}
+	</div>
+	<div>
+		{% if new_comment %}	
+		<div>your comment is awaiting for moderation</div>
+		{% else %}
+		<h3>Leave a comment</h3>
+		<form method="post"> {{comment_form|crispy}}
+			{% csrf_token %}
+			<button type ='submit'>Submit</button>
+		</form>
+		{% endif %}
+		</div>
+	
 
 {% endblock %}

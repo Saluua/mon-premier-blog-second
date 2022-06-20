@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dfs1)m7g3t9jfw**!hrm&7v$4-%t_)o%x)=j--p=&q6w=-+lmt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','saluua.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1','saluua.pythonanywhere.com','localhost']
 
 
 # Application definition
@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'crispy_forms',
 
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
